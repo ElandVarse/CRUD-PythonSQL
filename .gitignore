@@ -1,0 +1,14 @@
+# Ignorar o banco de dados
+users.db
+
+# Ignorar arquivos compilados pelo Python
+__pycache__/
+*.pyc
+
+# Ignorar ambientes virtuais
+venv/
+env/
+
+# Ignorar configurações de IDE/editor (opcional)
+.vscode/
+.idea/
