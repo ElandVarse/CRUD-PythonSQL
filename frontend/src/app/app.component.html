@@ -5,16 +5,24 @@
     <h4>CRUD operations with Python and SQLite</h4>
 
     <ul class="main-menu">
-      <li>CREATE</li>
-      <li>ADD</li>
-      <li>UPDATE</li>  
-      <li>REMOVE</li>
-      <li>LIST</li>
+      <li (click)="openMenu('option1')">CREATE</li>
+      <li (click)="openMenu('option2')">LIST</li>
+      <li (click)="openMenu('option3')">UPDATE</li>
+      <li (click)="openMenu('option4')">DELETE</li>
     </ul>
 
-    <app-main-menu-overlay></app-main-menu-overlay>
+    <app-main-menu-overlay 
+    *ngIf="selectedItem" 
+    [item]="selectedItem"
+    (close)="closeMenu()">
+    </app-main-menu-overlay>
   </div>
 </main>
 
-
 <router-outlet />
+
+<style>
+  .hide {
+    display: none;
+  }
+</style>
