@@ -1,34 +1,39 @@
 <div class="overlay" (click)="closeMenu()"></div>
 
-<div class="popup">
+<div class="menu-popup" (click)="$event.stopPropagation()">
+    <button class="menu__close" (click)="closeMenu()">x</button>
+
     <ng-container [ngSwitch]="item">
+        <form class="option__form" *ngSwitchCase="'option1'">
+                <label for="option1">CREATE USER</label>
+                <input type="text" id="option1" placeholder="User Name" />
+                <input type="text" id="option1" placeholder="Email" />
+                <button id="create-id" (click)="closeMenu()">ADD NEW USER</button>
+        </form>
 
-        <div *ngSwitchCase="'option1'">
-            <p>CREATE</p>
-            <input type="text" placeholder="Enter some text" />
-            <button (click)="closeMenu()">Submit</button>
+        <div class="option__form get-users" *ngSwitchCase="'option2'">
+            <ul>
+                <li>Nome: <strong>Lorem</strong> <br> Email:lorem&commat;email.com</li>
+                <li>Nome: <strong>Ipsum</strong> <br> Email:ipsum&commat;something.com</li>
+                <li>Nome: <strong>Dolor</strong> <br> Email:dolor&commat;something.com</li>
+                <li>Nome: <strong>Sit</strong> <br> Email:sit&commat;something.com</li>
+            </ul>
         </div>
 
-        <div *ngSwitchCase="'option2'">
-            <p>LIST</p>
-            <input type="text" placeholder="Enter some text" />
-            <button (click)="closeMenu()">Submit</button>
-        </div>
+        <form class="option__form" *ngSwitchCase="'option3'">
+                <label for="option1">UPDATE</label>
+                <input type="text" id="option1" placeholder="User ID" />
+                <input type="text" id="option1" placeholder="New Email" />
+                <button id="update-id"  (click)="closeMenu()">Update</button>
+        </form>
 
-        <div *ngSwitchCase="'option3'">
-            <p>UPDATE</p>
-            <input type="text" placeholder="Enter some text" />
-            <button (click)="closeMenu()">Submit</button>
-        </div>
-
-        <div *ngSwitchCase="'option4'">
-            <p>DELETE</p>
-            <input type="text" placeholder="Enter some text" />
-            <button (click)="closeMenu()">Submit</button>
-        </div>
+        <form class="option__form" *ngSwitchCase="'option4'">
+            <label>REMOVE USER</label>
+            <input type="text" placeholder="User ID" />
+            <button id="remove-id" (click)="closeMenu()">Delete</button>
+        </form>
     </ng-container>
 
-    <button (click)="closeMenu()">Close</button>
 </div>
 
 <style>
@@ -39,20 +44,122 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.5);
-        /* escurece o fundo */
         z-index: 10;
     }
 
-    .popup {
+    .menu__close {
+        position: absolute;
+        color: #333;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        transition: all 0.1s ease;
+        right: 34px;
+        top: 24px;
+        background-color: transparent;
+    }
+
+    .menu-popup {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         background: #fff;
-        padding: 16px;
+        padding: 32px;
         border: 1px solid #ccc;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
         z-index: 999;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .option__form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }   
+
+    .option__form label {
+        font-weight: bold;
+        font-size: 1.4rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: #333;
+        margin-bottom: 16px;
+    }
+
+    .option__form input {
+        margin-bottom: 8px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        outline: none;
+        font-size: 0.9rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .option__form button {
+        width: 100%;
+        padding: 8px 16px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        transition: all 0.1s ease;
+        font-size: 0.9rem;
+    }
+
+    .get-users {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 32px;
+    }
+
+    .get-users ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .get-users li {
+        color: #333;
+        padding: 16px;
+        background-color: #f1f1f1;
+        width: 100%;
+        text-align: center;
+        transition: .1s ease-in-out;
+        margin-bottom: 8px;
+        cursor: pointer;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .get-users li:hover {
+        background-color: #e0e0e0;
+    }
+
+    #create-id {
+        background-color: #4caf50;
+    }
+    #create-id:hover {
+        background-color: #45a049;
+    }
+
+    #update-id {
+        background-color: #ff9800;
+    }
+    #update-id:hover {
+        background-color: #e68a00;
+    }
+
+    #remove-id {
+        background-color: #dc3545;
+    }
+    #remove-id:hover {
+        background-color: #c82333;
     }
 </style>
