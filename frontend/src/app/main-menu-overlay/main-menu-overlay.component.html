@@ -1,6 +1,8 @@
+<div class="overlay" (click)="closeMenu()"></div>
+
 <div class="popup">
     <ng-container [ngSwitch]="item">
-        
+
         <div *ngSwitchCase="'option1'">
             <p>CREATE</p>
             <input type="text" placeholder="Enter some text" />
@@ -30,6 +32,17 @@
 </div>
 
 <style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* escurece o fundo */
+        z-index: 10;
+    }
+
     .popup {
         position: absolute;
         top: 50%;
@@ -40,5 +53,6 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 999;
     }
 </style>

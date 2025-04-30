@@ -5,10 +5,10 @@
     <h4>CRUD operations with Python and SQLite</h4>
 
     <ul class="main-menu">
-      <li (click)="openMenu('option1')">CREATE</li>
-      <li (click)="openMenu('option2')">LIST</li>
-      <li (click)="openMenu('option3')">UPDATE</li>
-      <li (click)="openMenu('option4')">DELETE</li>
+      <li id="create" (click)="openMenu('option1')">CREATE</li>
+      <li id="list" (click)="openMenu('option2')">LIST</li>
+      <li id="update" (click)="openMenu('option3')">UPDATE</li>
+      <li id="delete" (click)="openMenu('option4')">DELETE</li>
     </ul>
 
     <app-main-menu-overlay 
@@ -24,5 +24,64 @@
 <style>
   .hide {
     display: none;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+  }
+
+  .content{
+    height: 100%;
+    width: 100%;
+  }
+
+  ul.main-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  ul.main-menu li {
+    color: white;
+    padding: 16px 0;
+    background-color: #395c35;
+    width: 100%;
+    text-align: center;
+    transition: .1s ease-in-out;
+  }
+
+  li#create {
+    background-color: #4caf50;
+  }
+  li#create:hover {
+    background-color: #45a049;
+  }
+
+  li#list {
+    background-color: #2196F3;
+  }
+  li#list:hover {
+    background-color: #0b7dda;
+  }
+
+
+  li#update {
+    background-color: #ff9800;
+  }
+  li#update:hover {
+    background-color: #e68a00;
+  }
+
+  li#delete {
+    background-color: #f44336;
+  }
+  li#delete:hover {
+    background-color: #da190b;
   }
 </style>
