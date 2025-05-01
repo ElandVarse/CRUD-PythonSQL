@@ -17,18 +17,13 @@ def add_user(name, email, password):
         ''', (name, email, hashed_password))
 
         conn.commit()
-        print(f"Usuário '{name}' adicionado com sucesso! 🎉")
+        return {"message": f"Usuário '{name}' adicionado com sucesso! 🎉"}
 
     except sqlite3.IntegrityError:
-        print("Erro: esse email já está cadastrado!")
-    
+        return {"error": "Email já cadastrado. Tente outro."}
+    except Exception as e:
+        return {"error": f"Erro ao adicionar usuário: {str(e)}"}
     finally:
-        conn.close()
-
-# Execução direta
-if __name__ == "__main__":
-    name = input("Digite o nome: ")
-    email = input("Digite o email: ")
-    password = input("Digite a senha: ")
-
-    add_user(name, email, password)
+        # Fecha a conexão
+        if conn:
+            conn.close()

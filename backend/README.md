@@ -1,3 +1,3 @@
 - pip install -r requirements.txt
 
-- python main_menu.py
+uvicorn main:app --reload
