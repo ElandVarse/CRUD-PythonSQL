@@ -36,9 +36,10 @@
             <button type="submit" id="update-id">Update</button>
         </form>
 
-        <form class="option__form" *ngSwitchCase="'option4'">
+        <form class="option__form" *ngSwitchCase="'option4'" (ngSubmit)="deleteUserForm()" #updateForm="ngForm">
             <label>REMOVE USER</label>
-            <input type="text" placeholder="User ID" />
+            <input [(ngModel)]="deleteId" name="id" placeholder="User ID" required type="number" />
+            <button id="remove-id" type="submit">Delete User</button>
         </form>
     </ng-container>
 

@@ -20,6 +20,7 @@ export class MainMenuOverlayComponent {
   // Modelos para formulário
   newUser: User = { name: '', email: '', password: '' };
   updateId: number | null = null;
+  deleteId: number | null = null;
   updateEmailValue: string = '';
 
   constructor() {
@@ -48,6 +49,16 @@ export class MainMenuOverlayComponent {
     this.userService.updateUserEmail(this.updateId, this.updateEmailValue).subscribe(() => {
       this.updateId = null;
       this.updateEmailValue = '';
+      this.loadUsers();
+      this.closeMenu();
+    });
+  }
+
+  deleteUserForm() {
+    if (this.deleteId === null) return;
+
+    this.userService.deleteUser(this.deleteId).subscribe(() => {
+      this.deleteId = null;
       this.loadUsers();
       this.closeMenu();
     });
